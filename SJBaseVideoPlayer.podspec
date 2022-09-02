@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'SJBaseVideoPlayer/*.{h,m}'
-  s.default_subspecs = 'Common', 'AVPlayer'
+  s.default_subspecs = 'Common','AVPlayer','IJKPlayer'
   
   s.subspec 'Common' do |ss|
     ss.source_files = 'SJBaseVideoPlayer/Common/**/*.{h,m}'
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'IJKPlayer' do |ss|
       ss.source_files = 'SJBaseVideoPlayer/IJKPlayer/**/*.{h,m}'
-      ss.dependency 'PodIJKPlayer'
+  #    ss.dependency 'PodIJKPlayer'
       ss.dependency 'SJBaseVideoPlayer/Common'
   end
   
@@ -64,4 +64,14 @@ Pod::Spec.new do |s|
   s.dependency 'SJUIKit/ObserverHelper'
   s.dependency 'SJUIKit/Queues'
   s.dependency 'SJUIKit/SQLite3'
+  
+  
+  #--------------新增--------------------
+#  s.ios.vendored_frameworks = 'SJBaseVideoPlayer/PodIJKPlayer/IJKMediaFramework.framework'
+  s.ios.vendored_frameworks = 'SJBaseVideoPlayer/ijk/IJKMediaFramework.framework'
+
+
+  s.frameworks  = "AudioToolbox", "AVFoundation", "CoreGraphics", "CoreMedia", "CoreVideo", "MobileCoreServices", "OpenGLES", "QuartzCore", "VideoToolbox", "MediaPlayer"
+  s.libraries   = "bz2", "z", "stdc++"
+  
 end
